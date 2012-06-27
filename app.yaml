@@ -11,3 +11,6 @@ handlers:
 libraries:
 - name: django
   version: 1.2
+
+builtins:
+- remote_api: on

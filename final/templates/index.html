@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Foo</title>
+  </head>
+  <body>
+    <ul>
+    {% for o in offenders %}
+      <li>{{o.statement|linebreaksbr}}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
