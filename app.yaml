@@ -6,4 +6,8 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: final.app
+  script: main.app
+
+libraries:
+- name: django
+  version: 1.2
