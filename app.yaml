@@ -1,10 +1,14 @@
-application: finality
+application: lastingstatement
 version: 1
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
+- url: /texas
+  static_dir: texas
+- url: /bootstrap
+  static_dir: bootstrap
 - url: /.*
   script: main.app
 

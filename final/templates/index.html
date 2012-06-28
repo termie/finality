@@ -1,11 +1,17 @@
 <html>
   <head>
     <title>Foo</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <body>
     <ul>
-    {% for o in offenders %}
-      <li>{{o.statement|linebreaksbr}}</li>
+      {% for o in offenders %}
+      <div class="span6 offset3" style="height: 100%; padding-top: 10%">
+        {% if o.photo %}<div style="text-align: center"><img src="{{o.photo}}" /></div>{% endif %}
+        <p style="margin-top: 20px">{{o.statement|linebreaksbr}}</p>
+        <hr />
+      </div>
       {% endfor %}
     </ul>
   </body>

@@ -6,6 +6,7 @@ class Offender(db.Model):
   statement = db.TextProperty()
   name_last = db.StringProperty()
   name_first = db.StringProperty()
+  photo = db.StringProperty()
   offender_id = db.IntegerProperty()
   age = db.IntegerProperty()
   date = db.DateProperty()
