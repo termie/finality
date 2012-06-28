@@ -13,8 +13,12 @@ def index(request):
   #c = template.RequestContext(request, locals())
   offenders = db.GqlQuery('SELECT * '
                           'FROM Offender '
-                          'ORDER BY number '
-                          'LIMIT 20')
-  offenders = [x for x in offenders
-               if x.photo or x.statement != DECLINED]
+                          'WHERE show = True '
+                          'ORDER BY number ')
+  # Don't show photos for those without statements.
+  #offenders = [x for x in offenders
+  #             if x.photo and x.statement != DECLINED]
+  # Or do
+  #offenders = [x for x in offenders
+  #             if x.photo or x.statement != DECLINED]
   return shortcuts.render_to_response('templates/index.html', locals())

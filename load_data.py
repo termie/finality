@@ -21,7 +21,7 @@ for x in data:
                       race=x['race'],
                       county=x['country'])
   photo_path = 'texas/%s%s.jpg' % (x['last'], x['first'])
-  photo_path = photo_path.replace(' ', '')
+  photo_path = photo_path.replace(' ', '').replace(',', '').lower()
   if os.path.exists(photo_path):
     m.photo = photo_path
   m.save()

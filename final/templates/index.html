@@ -1,18 +1,33 @@
 <html>
   <head>
-    <title>Foo</title>
+    <title>Lasting Statement</title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32949975-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+  </script>
   </head>
   <body>
-    <ul>
-      {% for o in offenders %}
-      <div class="span6 offset3" style="height: 100%; padding-top: 10%">
-        {% if o.photo %}<div style="text-align: center"><img src="{{o.photo}}" /></div>{% endif %}
-        <p style="margin-top: 20px">{{o.statement|linebreaksbr}}</p>
-        <hr />
-      </div>
-      {% endfor %}
-    </ul>
+    <div class="span6 offset3" style="height: 100%; padding-top: 10%">
+      <h1>Lasting Statement</h1>
+      <p>Below you will find the last statements, and sometimes photographs,
+         of men and women who have been executed by the state of Texas
+         since 1982.</p>
+      <hr />
+    </div>
+    {% for o in offenders %}
+    <div class="span6 offset3" style="min-height: 100%; padding-top: 10%">
+      {% if o.photo %}<div style="text-align: center"><img src="{{o.photo}}" /></div>{% endif %}
+      <p style="margin-top: 20px">{{o.statement|linebreaksbr}}</p>
+      <hr />
+    </div>
+    {% endfor %}
   </body>
 </html>

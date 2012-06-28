@@ -12,3 +12,4 @@ class Offender(db.Model):
   date = db.DateProperty()
   race = db.StringProperty()
   county = db.StringProperty()
+  show = db.BooleanProperty()
