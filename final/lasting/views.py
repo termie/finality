@@ -14,7 +14,7 @@ def index(request):
   offenders = db.GqlQuery('SELECT * '
                           'FROM Offender '
                           'WHERE show = True '
-                          'ORDER BY number LIMIT 10')
+                          'ORDER BY number ')
   # Don't show photos for those without statements.
   #offenders = [x for x in offenders
   #             if x.photo and x.statement != DECLINED]

@@ -71,41 +71,42 @@
        </div>
     </div>
     {% endfor %}
-      <script type="text/javascript">
-        $('img').lazyload({
-          effect: "fadeIn"
-          });
 
-  $(document.documentElement).keydown(function(event) {
-    var key = event.keyCode || event.which;
-    if (key === 40) {
-      var curr = $("#current");
-      if (curr.html()) {
-        var next = curr.next();
-        curr.attr('id', '')
-        next.attr('id', 'current')
-        curr = next;
-      } else {
-        $('.card').first().attr('id', 'current');
+    <script type="text/javascript">
+    $('img').lazyload({
+      effect: "fadeIn"
+    });
+
+    $(document.documentElement).keydown(function(event) {
+      var key = event.keyCode || event.which;
+      if (key === 40 || key === 39 || key === 107) {
+        var curr = $("#current");
+        if (curr.html()) {
+          var next = curr.next();
+          curr.attr('id', '')
+          next.attr('id', 'current')
+          curr = next;
+        } else {
+          $('.card').first().attr('id', 'current');
+        }
+        $("#current").ScrollTo()
+        return false;
+      } else if (key === 38 || key === 37 || key === 106) {
+        var curr = $("#current");
+        if (curr.html()) {
+          var next = curr.prev();
+          curr.attr('id', '')
+          next.attr('id', 'current')
+          curr = next;
+        } else {
+          $('.card').first().attr('id', 'current');
+        }
+        $("#current").ScrollTo()
+        return false;
       }
-      $("#current").ScrollTo()
-      return false;
-    } else if (key === 38) {
-      var curr = $("#current");
-      if (curr.html()) {
-        var next = curr.prev();
-        curr.attr('id', '')
-        next.attr('id', 'current')
-        curr = next;
-      } else {
-        $('.card').first().attr('id', 'current');
-      }
-      $("#current").ScrollTo()
-      return false;
-    }
 
 
-  });
-      </script>
+    });
+    </script>
   </body>
 </html>
