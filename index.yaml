@@ -1,0 +1,6 @@
+indexes:
+
+- kind: Offender
+  properties:
+  - name: show
+  - name: number

@@ -9,6 +9,8 @@ handlers:
   static_dir: texas
 - url: /bootstrap
   static_dir: bootstrap
+- url: /static
+  static_dir: static
 - url: /.*
   script: main.app
 

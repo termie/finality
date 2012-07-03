@@ -3,6 +3,10 @@
     <title>Lasting Statement</title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="static/jquery-1.7.2.js"></script>
+    <script src="static/jquery.lazyload.js"></script>
+    <script src="static/jquery.scrollto.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-32949975-1']);
@@ -12,7 +16,40 @@
           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-  </script>
+      </script>
+      <style>
+        .card {
+          min-height: 100%;
+          padding-top: 5%;
+        }
+        div.photo {
+          text-align: center;
+          height: 400px;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #666;
+        }
+        img.photo {
+          height: 100%;
+        }
+
+        .statement {
+          margin-top: 15px;
+          font-size: 18px;
+          font-weight: 300;
+          letter-spacing: 0px;
+        }
+
+        .words {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .who {
+          font-weight: 600;
+          line-height: 100%;
+        }
+
+      </style>
   </head>
   <body>
     <div class="span6 offset3" style="height: 100%; padding-top: 10%">
@@ -23,11 +60,52 @@
       <hr />
     </div>
     {% for o in offenders %}
-    <div class="span6 offset3" style="min-height: 100%; padding-top: 10%">
-      {% if o.photo %}<div style="text-align: center"><img src="{{o.photo}}" /></div>{% endif %}
-      <p style="margin-top: 20px">{{o.statement|linebreaksbr}}</p>
-      <hr />
+    <div class="span10 offset1 card">
+      {% if o.photo %}<div class="photo"><img class="photo" data-original="{{o.photo}}"/></div>{% endif %}
+      <div class="words">
+        <p class="statement">{{o.statement|linebreaksbr}}</p>
+        <p class="who">
+         {{o.name_first}} {{o.name_last}}, {{o.age}}<br />
+         {{o.county}} county
+         </p>
+       </div>
     </div>
     {% endfor %}
+      <script type="text/javascript">
+        $('img').lazyload({
+          effect: "fadeIn"
+          });
+
+  $(document.documentElement).keydown(function(event) {
+    var key = event.keyCode || event.which;
+    if (key === 40) {
+      var curr = $("#current");
+      if (curr.html()) {
+        var next = curr.next();
+        curr.attr('id', '')
+        next.attr('id', 'current')
+        curr = next;
+      } else {
+        $('.card').first().attr('id', 'current');
+      }
+      $("#current").ScrollTo()
+      return false;
+    } else if (key === 38) {
+      var curr = $("#current");
+      if (curr.html()) {
+        var next = curr.prev();
+        curr.attr('id', '')
+        next.attr('id', 'current')
+        curr = next;
+      } else {
+        $('.card').first().attr('id', 'current');
+      }
+      $("#current").ScrollTo()
+      return false;
+    }
+
+
+  });
+      </script>
   </body>
 </html>
