@@ -20,19 +20,17 @@
     </script>
   </head>
   <body>
-    <div class="span6 offset3" style="height: 100%; padding-top: 10%">
+    <div class="span6 offset3 card">
       <h1>Lasting Statement</h1>
       <p>Below you will find the last statements, and sometimes photographs,
          of men and women who have been executed by the state of Texas
          since 1982.
       </p>
       <hr />
-      <p style="color: #DDD">you can use j/k, left/right or up/down to navigate</p>
+      <p style="color: #DDD">you can use k/j, left/right or up/down to navigate</p>
     </div>
-
     {% include "templates/_offenders.html" %}
-
-    <div class="span6 offset3" style="height: 100%; padding-top: 10%">
+    <div class="span6 offset3 card">
       <p>These people were human beings much like you or I, some quite
       young, and they experienced love and fear in their lives.
       </p><p>
@@ -53,7 +51,7 @@
 
     $(document.documentElement).keydown(function(event) {
       var key = event.keyCode || event.which;
-      if (key === 40 || key === 39 || key === 75) {
+      if (key === 40 || key === 39 || key === 74) {
         var curr = $("#current");
         if (curr.html()) {
           var next = curr.next();
@@ -65,7 +63,7 @@
         }
         $("#current").ScrollTo()
         return false;
-      } else if (key === 38 || key === 37 || key === 74) {
+      } else if (key === 38 || key === 37 || key === 75) {
         var curr = $("#current");
         if (curr.html()) {
           var next = curr.prev();
