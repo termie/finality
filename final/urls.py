@@ -6,6 +6,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     (r'^$', 'final.lasting.views.index'),
+    (r'^(?P<number>\d+)$', 'final.lasting.views.individual'),
     # Example:
     # (r'^final/', include('final.foo.urls')),
 

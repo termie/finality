@@ -16,6 +16,11 @@ def _get_data():
   if data is not None:
     return data
   else:
+    #offenders = db.GqlQuery('SELECT photo, statement, name_first, name_last, '
+    #                        '       age, county '
+    #                        'FROM Offender '
+    #                        'WHERE show = True '
+    #                        'ORDER BY number ')
     offenders = db.GqlQuery('SELECT * '
                             'FROM Offender '
                             'WHERE show = True '
@@ -23,6 +28,16 @@ def _get_data():
     offenders = list(offenders)
     memcache.add("shown_offenders", offenders)
     return offenders
+
+def _get_single(number):
+  number = int(number)
+  data = memcache.get("offender_%s" % number)
+  if data is not None:
+    return data
+  else:
+    offender = models.Offender.get_by_key_name(str(number))
+    memcache.add("offender_%s" % number, offender)
+    return offender
 
 def index(request):
   #t = loader.get_template('templates/index.html')
@@ -36,3 +51,7 @@ def index(request):
   #offenders = [x for x in offenders
   #             if x.photo or x.statement != DECLINED]
   return shortcuts.render_to_response('templates/index.html', locals())
+
+def individual(request, number):
+  offenders = [_get_single(number)]
+  return shortcuts.render_to_response('templates/individual.html', locals())

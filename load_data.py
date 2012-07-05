@@ -19,6 +19,7 @@ for x in data:
                       offender_id=int(x['tdcj']),
                       age=int(x['age']),
                       race=x['race'],
+                      show=True,
                       county=x['country'])
   photo_path = 'texas/%s%s.jpg' % (x['last'], x['first'])
   photo_path = photo_path.replace(' ', '').replace(',', '').lower()

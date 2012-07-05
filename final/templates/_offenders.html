@@ -1,0 +1,12 @@
+    {% for o in offenders %}
+    <div class="span10 offset1 card">
+      {% if o.photo %}<div class="photo"><img class="photo" src="{{o.photo}}"/></div>{% endif %}
+      <div class="words">
+        <p class="statement">{{o.statement|linebreaksbr}}</p>
+        <p class="who">
+        <a href="/{{o.number}}">{{o.name_first}} {{o.name_last}}, {{o.age}}</a><br />
+         {{o.county}} county
+         </p>
+       </div>
+    </div>
+    {% endfor %}
