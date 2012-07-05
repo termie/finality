@@ -1,3 +1,5 @@
+import random
+
 from django import template
 from django import shortcuts
 from django.template import loader
@@ -15,6 +17,8 @@ def index(request):
                           'FROM Offender '
                           'WHERE show = True '
                           'ORDER BY number ')
+  offenders = list(offenders)
+  random.shuffle(offenders)
   # Don't show photos for those without statements.
   #offenders = [x for x in offenders
   #             if x.photo and x.statement != DECLINED]

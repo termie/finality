@@ -4,7 +4,7 @@
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <script src="static/jquery-1.7.2.js"></script>
-    <script src="static/jquery.lazyload.js"></script>
+    <!--<script src="static/jquery.lazyload.js"></script>-->
     <script src="static/jquery.scrollto.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
@@ -37,6 +37,7 @@
           font-size: 18px;
           font-weight: 300;
           letter-spacing: 0px;
+          line-height: 24px;
         }
 
         .words {
@@ -61,7 +62,7 @@
     </div>
     {% for o in offenders %}
     <div class="span10 offset1 card">
-      {% if o.photo %}<div class="photo"><img class="photo" data-original="{{o.photo}}"/></div>{% endif %}
+      {% if o.photo %}<div class="photo"><img class="photo" src="{{o.photo}}"/></div>{% endif %}
       <div class="words">
         <p class="statement">{{o.statement|linebreaksbr}}</p>
         <p class="who">
@@ -73,13 +74,13 @@
     {% endfor %}
 
     <script type="text/javascript">
-    $('img').lazyload({
-      effect: "fadeIn"
-    });
+    // $('img').lazyload({
+    //  effect: "fadeIn"
+    // });
 
     $(document.documentElement).keydown(function(event) {
       var key = event.keyCode || event.which;
-      if (key === 40 || key === 39 || key === 107) {
+      if (key === 40 || key === 39 || key === 75) {
         var curr = $("#current");
         if (curr.html()) {
           var next = curr.next();
@@ -91,7 +92,7 @@
         }
         $("#current").ScrollTo()
         return false;
-      } else if (key === 38 || key === 37 || key === 106) {
+      } else if (key === 38 || key === 37 || key === 74) {
         var curr = $("#current");
         if (curr.html()) {
           var next = curr.prev();
