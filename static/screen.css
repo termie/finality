@@ -2,12 +2,17 @@
   min-height: 100%;
   padding-top: 5%;
 }
-
-#individual .card {
-  min-height: 0%;
-  padding-top: 5%;
+#individual body {
+  min-height: 100%;
 }
-
+#individual .card {
+  min-height: 80%;
+  padding-top: 0%;
+}
+#individual #footer {
+  height: 20px;
+  margin-top: -20px;
+}
 div.photo {
   text-align: center;
   height: 400px;
@@ -31,8 +36,15 @@ img.photo {
 .who {
   font-weight: 600;
   line-height: 100%;
+  float: left;
 }
-
-.who a {
+.who a, h1 a {
   color: #333;
+}
+.permalink {
+  float: right;
+  clear: none;
+}
+.icon-gray {
+  opacity: 0.3;
 }

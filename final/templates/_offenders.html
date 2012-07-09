@@ -4,9 +4,10 @@
       <div class="words">
         <p class="statement">{{o.statement|linebreaksbr}}</p>
         <p class="who">
-        <a href="/{{o.number}}">{{o.name_first}} {{o.name_last}}, {{o.age}}</a><br />
-         {{o.county}} county
-         </p>
+          {{o.name_first}} {{o.name_last}}, {{o.age}}<br />
+          {{o.county}} county
+        </p>
+        <a href="/{{o.number}}"><i class="icon-arrow-right icon-gray permalink">&nbsp</i></a>
        </div>
     </div>
     {% endfor %}
